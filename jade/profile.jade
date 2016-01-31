@@ -29,12 +29,12 @@ html
             | Arcuisine
         div(class='navbar-collapse collapse', style='margin: 0px 0px 0px 180px;')
           ul(class='nav navbar-nav')
+            li(class='active')
+              a(href='/profile') Home
             li
-              a(href='#') Home
+              a(href='/places') Places
             li
-              a(href='#Places') Places
-            li
-              a(href='#Group') Group
+              a(href='/group') Group
           ul(class='nav navbar-nav navbar-right', style='margin-right: 15px;')
             li
               a(href='#Settings', style='font-weight: bold;')= user.local.email
@@ -43,7 +43,7 @@ html
         .col-md-6
           .profile-header-container
             .profile-header-img
-              img(class='img-circle', src='images/defaultProfile.png', style='width: 150px; height: 150px;')
+              img(class='img-circle', src='images/profile_default.png', style='width: 150px; height: 150px;')
     #wrapper
       //-#sidebar-wrapper(class='ui-resizable', style='top: 50px;')
       //-  ul(class='sidebar-nav', id='sidebar-val')
