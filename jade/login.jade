@@ -20,6 +20,8 @@ html
           span(class='fa fa-sign-in')
           |  Login
         // Show any messages that come back with authentication
+        if message.length>0
+          div(class='alert alert-danger')= message
         // Login Form
         form(action='/login', method='post')
           .form-group
