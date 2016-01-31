@@ -6,7 +6,14 @@ var parseCookie = require('connect').parse;
 var session = require('express-session');
 var cookieParser = require('cookie-parser');
 var mongoose = require('mongoose'); // MongoDB
+var passport = require('passport'); // Passport
+var flash = require('connect-flash'); // Connect-Flash
+var morgan = require('morgan'); // Morgan
+var bodyParser = require('body-parser');
 //var MemoryStore = express.session.MemoryStore;
+
+// Database configuration
+var configDB = require('./config/database.js');
 
 // Define variables
 var app = express(); // This is our app
@@ -23,7 +30,7 @@ console.log('Got server settings!');
 
 // Connect to database
 console.log('Connecting to database...');
-mongoose.connect('mongodb://localhost/arcuisine');
+mongoose.connect(configDB.url);
 
 // Create database connection
 var db = mongoose.connection;
@@ -42,17 +49,27 @@ app.engine('jade', require('jade').__express);
 app.use(express.static(__dirname + '/public'));
 
 // Create callback for the GET request
-app.get('/', function(req, res){
-    res.render('project');
-});
+//app.get('/', function(req, res){
+//    res.render('project');
+//});
 
 // Configure application
+app.use(morgan('dev'));
 app.use(cookieParser());
+app.use(bodyParser()); // Get information from HTML forms
+
+// Set up Passport
 app.use(session({
-    secret: 'test',
+    secret: 'supersecretsecret',
     resave: false,
     saveUninitialized: true
 }));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
+
+// Create routes
+require('./app/routes.js')(app,passport);
 
 // Start the app on a specific port
 var io = require('socket.io').listen(app.listen(port)); // Use socket.io

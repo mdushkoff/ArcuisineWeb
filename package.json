@@ -8,7 +8,16 @@
     "socket.io": "latest",
     "underscore": "^1.8.3",
     "connect": "~3.4.1",
-    "node-session": "0.0.1-alpha.3"
+    "mongoose" : "~3.8.1",
+    "passport" : "~0.1.17",
+    "passport-local" : "~0.1.6",
+    "bcrypt-nodejs" : "latest",
+    "node-session": "0.0.1-alpha.3",
+    "connect-flash": "~0.1.1",
+
+    "morgan": "~1.0.0",
+    "body-parser": "~1.0.0",
+    "method-override": "~1.0.0"
   },
   "author": "mad1841"
 }
