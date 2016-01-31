@@ -53,6 +53,9 @@ app.use(express.static(__dirname + '/public'));
 //    res.render('project');
 //});
 
+// Set up Passport
+require('./config/passport')(passport);
+
 // Configure application
 app.use(morgan('dev'));
 app.use(cookieParser());

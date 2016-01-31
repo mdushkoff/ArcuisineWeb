@@ -12,7 +12,11 @@ module.exports = function(app, passport){
     });
 
     // Process login form
-    // app.post('/login', do passport stuff);
+    app.post('/login', passport.authenticate('local-login',{
+        successRedirect : '/profile',
+        failureRedirect : '/login',
+        failureFlash : true
+    }));
 
     // Signup Page
     app.get('/signup', function(req,res){
@@ -21,7 +25,11 @@ module.exports = function(app, passport){
     });
 
     // Process the signup form
-    //app.post('/signup', do passport stuff);
+    app.post('/signup', passport.authenticate('local-signup',{
+        successRedirect : '/profile', // Redirect to secure profile page
+        failureRedirect : '/signup', // Redirect back to signup page
+        failureFlash : true
+    }));
 
     // Profile Page
     app.get('/profile', isLoggedIn, function(req,res){
