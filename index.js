@@ -5,6 +5,7 @@ var spawn = require('child_process').spawn;
 var parseCookie = require('connect').parse;
 var session = require('express-session');
 var cookieParser = require('cookie-parser');
+var mongoose = require('mongoose'); // MongoDB
 //var MemoryStore = express.session.MemoryStore;
 
 // Define variables
@@ -19,6 +20,18 @@ var clients = []; // List of clients
 console.log('Getting server settings...');
 var restDat = JSON.parse(fs.readFileSync('data/restaurants.json')); // Get restaurant data
 console.log('Got server settings!');
+
+// Connect to database
+console.log('Connecting to database...');
+mongoose.connect('mongodb://localhost/arcuisine');
+
+// Create database connection
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function(){
+    // Connected to database
+    console.log('Connected to database!');
+});
 
 // Set up application settings to use Jade
 app.set('views', __dirname + jadeDir);
