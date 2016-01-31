@@ -1,0 +1,93 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    meta(name='description', content='')
+    meta(name='author', content='mad1841')
+    title= 'Arcuisine'
+    // Bootstrap Core CSS
+    link(href='css/bootstrap.min.css', rel='stylesheet', type='text/css')
+    // Font Awesome Fonts
+    link(href='https://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css', rel='stylesheet', type='text/css')
+    // MG CSS
+    link(href='css/metricsgraphics.css', rel='stylesheet', type='text/css')
+    // Custom CSS
+    link(href='css/simple-sidebar.css', rel='stylesheet', type='text/css')
+    link(href='css/custom.css', rel='stylesheet', type='text/css')
+  body
+    div(class='navbar navbar-inverse navbar-fixed-top')
+      .container-fixed
+        .navbar-header
+          button(type='button', class='navbar-toggle', data-toggle='collapse', data-target='.navbar-collapse')
+            span(class='icon-bar')
+            span(class='icon-bar')
+            span(class='icon-bar')
+          a(class='navbar-brand', rel='home', href='#', title='Arcuisine', style='position: fixed; margin-left: 80px;')
+            img(style='max-width:65px; margin-top: -5px; position: fixed; left: 15px;', src='/images/logo27Csmall.png')
+            | Arcuisine
+        div(class='navbar-collapse collapse', style='margin: 0px 0px 0px 180px;')
+          ul(class='nav navbar-nav')
+            li
+              a(href='#') Home
+            li
+              a(href='#Settings') Settings
+            li
+              a(href='#About') About
+    div(class='container body-content')
+    #wrapper
+      //-#sidebar-wrapper(class='ui-resizable', style='top: 50px;')
+      //-  ul(class='sidebar-nav', id='sidebar-val')
+      //-#vertical-sep(class='vert-sep', style='top: 50px;')
+      #page-content-wrapper(style='top: 50px;')
+
+    // jQuery
+    script(src='js/jquery.js')
+    // Bootstrap Core Javascript
+    script(src='js/bootstrap.min.js')
+    // D3
+    script(src='js/d3.v3.min.js')
+    // MG
+    script(src='js/MG/MG.js')
+    script(src='js/MG/common/data_graphic.js')
+    script(src='js/MG/common/hooks.js')
+    script(src='js/MG/common/register.js')
+    script(src='js/MG/common/bootstrap_tooltip_popover.js')
+    script(src='js/MG/common/chart_title.js')
+    script(src='js/MG/common/y_axis.js')
+    script(src='js/MG/common/x_axis.js')
+    script(src='js/MG/common/init.js')
+    script(src='js/MG/common/markers.js')
+    script(src='js/MG/common/window_listeners.js')
+    script(src='js/MG/layout/bootstrap_dropdown.js')
+    script(src='js/MG/layout/button.js')
+    script(src='js/MG/charts/line.js')
+    script(src='js/MG/charts/histogram.js')
+    script(src='js/MG/charts/point.js')
+    script(src='js/MG/charts/bar.js')
+    script(src='js/MG/charts/table.js')
+    script(src='js/MG/charts/missing.js')
+    script(src='js/MG/misc/process.js')
+    script(src='js/MG/misc/smoothers.js')
+    script(src='js/MG/misc/formatters.js')
+    script(src='js/MG/misc/transitions.js')
+    script(src='js/MG/misc/utility.js')
+    script(src='js/MG/misc/error.js')
+    // socket.io
+    script(src='/socket.io/socket.io.js')
+    // Custom handler script
+    script(src='js/custom.js')
+    // Menu Toggle Script
+    script.
+      $(".vert-sep").on("click", function(e){
+        console.log('clicked');
+        $("#wrapper").toggleClass("toggled");
+      });
+    // Vertical Separator Hover Script
+    script.
+      $(".vert-sep").hover(function(){
+        $(this).addClass("sep-hover");
+      }, function(){
+        $(this).removeClass("sep-hover");
+      });

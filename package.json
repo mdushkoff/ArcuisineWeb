@@ -1,0 +1,14 @@
+{
+  "name": "Arcuisine",
+  "version": "0.0.1",
+  "description": "Intelligence For Your Eats",
+  "dependencies": {
+    "express": "latest",
+    "jade": "latest",
+    "socket.io": "latest",
+    "underscore": "^1.8.3",
+    "connect": "~3.4.1",
+    "node-session": "0.0.1-alpha.3"
+  },
+  "author": "mad1841"
+}
