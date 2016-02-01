@@ -90,7 +90,7 @@ app.post('/optim', function(req,res){
     console.log('Choosing: ' + r1 + ', ' + r2 + ', ' + r3);
 
     // Create response
-    var resDat = {data:[]};
+    var resDat = {data:[], gid:req.body.gid};
     resDat.data.push(restDat.response.data[r1].name);
     resDat.data.push(restDat.response.data[r2].name);
     resDat.data.push(restDat.response.data[r3].name);
