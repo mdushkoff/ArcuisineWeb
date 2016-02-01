@@ -60,6 +60,10 @@ require('./config/passport')(passport);
 app.use(morgan('dev'));
 app.use(cookieParser());
 app.use(bodyParser()); // Get information from HTML forms
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
 
 // Set up Passport
 app.use(session({
@@ -73,6 +77,29 @@ app.use(flash());
 
 // Create routes
 require('./app/routes.js')(app,passport);
+
+// Handle optimization
+app.post('/optim', function(req,res){
+    // TODO: Optimize based on likes
+
+    // Choose 3 random numbers
+    console.log(restDat.response.data.length-1)
+    var r1 = Math.floor((Math.random() * restDat.response.data.length-1) + 0);
+    var r2 = Math.floor((Math.random() * restDat.response.data.length-1) + 0);
+    var r3 = Math.floor((Math.random() * restDat.response.data.length-1) + 0);
+    console.log('Choosing: ' + r1 + ', ' + r2 + ', ' + r3);
+
+    // Create response
+    var resDat = {data:[]};
+    resDat.data.push(restDat.response.data[r1].name);
+    resDat.data.push(restDat.response.data[r2].name);
+    resDat.data.push(restDat.response.data[r3].name);
+
+    console.log(resDat)
+
+    // Send response
+    res.end(JSON.stringify(resDat));
+});
 
 // Start the app on a specific port
 var io = require('socket.io').listen(app.listen(port)); // Use socket.io

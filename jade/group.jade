@@ -29,54 +29,40 @@ html
             | Arcuisine
         div(class='navbar-collapse collapse', style='margin: 0px 0px 0px 180px;')
           ul(class='nav navbar-nav')
-            li(class='active')
+            li
               a(href='/profile') Home
             li
               a(href='/places') Places
-            li
+            li(class='active')
               a(href='/group') Group
           ul(class='nav navbar-nav navbar-right', style='margin-right: 15px;')
             li
               a(href='#Settings', style='font-weight: bold;')= user.local.email
     div(class='container body-content', style='top:50px; position: absolute; width:100%; height: 100%; padding-left: 25px; padding-right: 25px; padding-top: 25px;')
-      .row(style='height: 350px; width: 100%;')
-        .col-md-2(style='text-align: center')
-          .profile-header-container
-            .profile-header-img
-              img(class='img-circle', src='images/profile_default.png', style='width: 250px; height: 250px;')
-              h1(align='center')= user.local.email
-      .row(style='height: 50px; width: 100%;')
-        .col-md-6
-          h2 Likes
-      hr
-      .row
-        col-lg-12(id='profile-likes')
-          ul
-            li Test1
-            li Test2
-            li Test3
-      .row(style='height: 50px; width: 100%;')
-        .col-md-6
-          h2 Dislikes
-      hr
-      .row
-        col-lg-12(id='profile-dislikes')
-          ul
-            li Test1
-            li Test2
-            li Test3
-      .row(style='height: 50px; width: 100%;')
-        .col-md-6
-          h2 Places I've Been
-      hr
-      .row
-        col-lg-12(id='profile-places')
-          ul
-            li Test1
-            li Test2
-            li Test3
-        
-    #wrapper
+      //-h1 Group
+      //-hr
+      .jumbotron(id='group-menu')
+        h1 Group
+        hr
+        .row(id='group-list')
+          .col-xs-6
+            .col-xs-4
+            .col-xs-4
+              form(action='/group', method='post')
+                button(type='submit', class='btn btn-lg')
+                  | Create New
+          .col-xs-6
+            form(action='/group', method='post')
+              .col-xs-4
+                .form-group
+                  //fieldset(data-role='controlgroup')
+                  input(type='hidden', class='form-control', value=user.local.email, name='email')
+                  input(type='hidden', class='form-control', value='join', name='action')
+                  input(type='text', class='form-control', name='gid')
+              .col-xs-4
+                button(id='group-join', class='btn btn-lg')
+                  | Join
+      .row(id='group-content')
       //-#sidebar-wrapper(class='ui-resizable', style='top: 50px;')
       //-  ul(class='sidebar-nav', id='sidebar-val')
       //-#vertical-sep(class='vert-sep', style='top: 50px;')
@@ -85,38 +71,10 @@ html
     script(src='js/jquery.js')
     // Bootstrap Core Javascript
     script(src='js/bootstrap.min.js')
-    // D3
-    script(src='js/d3.v3.min.js')
-    // MG
-    script(src='js/MG/MG.js')
-    script(src='js/MG/common/data_graphic.js')
-    script(src='js/MG/common/hooks.js')
-    script(src='js/MG/common/register.js')
-    script(src='js/MG/common/bootstrap_tooltip_popover.js')
-    script(src='js/MG/common/chart_title.js')
-    script(src='js/MG/common/y_axis.js')
-    script(src='js/MG/common/x_axis.js')
-    script(src='js/MG/common/init.js')
-    script(src='js/MG/common/markers.js')
-    script(src='js/MG/common/window_listeners.js')
-    script(src='js/MG/layout/bootstrap_dropdown.js')
-    script(src='js/MG/layout/button.js')
-    script(src='js/MG/charts/line.js')
-    script(src='js/MG/charts/histogram.js')
-    script(src='js/MG/charts/point.js')
-    script(src='js/MG/charts/bar.js')
-    script(src='js/MG/charts/table.js')
-    script(src='js/MG/charts/missing.js')
-    script(src='js/MG/misc/process.js')
-    script(src='js/MG/misc/smoothers.js')
-    script(src='js/MG/misc/formatters.js')
-    script(src='js/MG/misc/transitions.js')
-    script(src='js/MG/misc/utility.js')
-    script(src='js/MG/misc/error.js')
     // socket.io
     script(src='/socket.io/socket.io.js')
     // Custom handler script
-    script(src='js/custom.js')
+    script(src='js/group.js')
     // Menu Toggle Script
     script.
       $(".vert-sep").on("click", function(e){
